@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mario Adventure</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>🍄 Mario Adventure</h1>
+
+    <div class="layout">
+      <!-- لوحة المتصدرين (يسار) -->
+      <aside class="board">
+       <h3>🏆 أفضل 3 لاعبين</h3>
+       <ol id="leaderboard">
+        <li>جارٍ التحميل...</li>
+       </ol>
+
+       <hr>
+
+       <h3>🟢 اللاعبون المتصلون</h3>
+       <ul id="onlinePlayers">
+       <li>جارٍ الاتصال...</li>
+       </ul>
+      </aside>
+
+      <!-- اللعبة (يمين) -->
+      <section class="game-col">
+        <div class="stage">
+          <canvas id="game" width="800" height="500"></canvas>
+
+          <!-- شاشة البداية -->
+          <div id="startOverlay" class="overlay">
+            <div class="card">
+              <h2 class="title">🍄 Mario Adventure</h2>
+              <p>اكتب اسمك لتسجيل نتيجتك في لوحة المتصدرين</p>
+              <div class="row">
+                <input id="startName" maxlength="20" placeholder="اسمك" autocomplete="off">
+              </div>
+              <div class="row">
+                <button id="startBtn" class="green big">هيا نبدأ ▶</button>
+              </div>
+              <p class="small">↑ / المسافة للقفز · ↓ للانزلاق · ← → للحركة</p>
+            </div>
+          </div>
+
+          <!-- شاشة نهاية اللعبة -->
+          <div id="overlay" class="overlay hidden">
+            <div class="card">
+              <h2>انتهت اللعبة</h2>
+              <p>العملات: <b id="finalCoins">0</b> &nbsp;|&nbsp; المستوى: <b id="finalLevel">1</b></p>
+
+              <div id="saveRow" class="row">
+                <input id="nameInput" maxlength="20" placeholder="اسمك" autocomplete="off">
+                <button id="saveBtn">حفظ النتيجة</button>
+              </div>
+              <p id="msg" class="msg"></p>
+
+              <div class="row">
+                <button id="buyBtn" class="green hidden">اشترِ محاولة (50 عملة) [B]</button>
+                <button id="restartBtn" class="red">إعادة اللعب [R]</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="touch">
+          <button data-key="left">◀</button>
+          <button data-key="right">▶</button>
+          <button data-key="down">▼ انزلاق</button>
+          <button data-key="up">▲ قفز</button>
+        </div>
+
+        <p class="hint">الأسهم للحركة · ↑ أو المسافة للقفز · ↓ للانزلاق</p>
+      </section>
+    </div>
+  </main>
+  <script src="socket.io.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
